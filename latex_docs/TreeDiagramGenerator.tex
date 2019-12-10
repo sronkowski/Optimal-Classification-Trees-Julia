@@ -1,0 +1,56 @@
+\documentclass[margin=10pt]{article}
+\usepackage[T1]{fontenc}                
+\usepackage[utf8]{inputenc}             
+\usepackage[english,italian]{babel}
+\usepackage{tikz}
+  \usetikzlibrary{shapes,arrows,fit,calc,positioning}
+  \tikzset{box/.style={draw, diamond, thick, text centered, minimum height=0.5cm, minimum width=1cm}}
+  \tikzset{line/.style={draw, thick, -latex'}}
+  
+\begin{document}
+    \begin{tikzpicture}[auto]
+    %depth 1
+        \node [box]                                    (node1)      {$f_7 \leq 0.26$};
+    %depth 2
+        \node [box, below=0.0cm of node1, xshift=-3.5cm]    (node2)    {$f_4 \leq 0.36$};
+        \node [box, below=0.0cm of node1, xshift=3.5cm]     (node3)    {$f_{13} \leq 0.29$};
+    %depth 3
+        \node [box, below=0.0cm of node2, xshift=-1.5cm]  (node4)    {$f_1 \leq 0.46$ };
+        \node [box, below=0.0cm of node2, xshift=1.5cm]  (node5)    {$f_{10} \leq 0.23$};
+        \node [box, below=0.0cm of node3, xshift=-1.5cm]   (node6)    {$f_{13} \leq 0.9$};
+        \node [box, below=0.0cm of node3, xshift=1.5cm]   (node7)    {$f_{10} \leq 0.17$};
+    %leaves
+        \node [rectangle, below=1.5cm of node4, xshift=-1.1cm]  (node8)    {$K_2 = 6$};
+        \node [rectangle, below=1.5cm of node4, xshift=1.1cm]   (node9)    {$\emptyset$};
+        \node [rectangle, below=0.0cm of node5, xshift=-1.2cm]  (node10)   {$K_2 = 5$};
+        \node [rectangle, below=0.0cm of node5, xshift=1.2cm]   (node11)   {$K_3 = 30$};
+        
+        
+        \node [rectangle, below=1.5cm of node6, xshift=-1.1cm]  (node12)    {$K_2 = 9$};
+        \node [rectangle, below=1.5cm of node6, xshift=1.1cm]  (node13)    {$K_2 = 26$};
+        \node [rectangle, below=0.0cm of node7, xshift=-1.2cm]  (node14)    {$K_2 = 4$};
+        \node [rectangle, below=0.0cm of node7, xshift=1.2cm]   (node15)    {$K_1 = 44, K_2 = 4$};
+        
+        %
+        %depth 1 to 2
+        \path [line] (node1) -|         (node3);
+        \path [line] (node1) -|         (node2);
+        %depth 2 to 3
+        \path [line] (node3) -|       (node6);
+        \path [line] (node3) -|       (node7);
+         \path [line] (node2) -|       (node4);
+        \path [line] (node2) -|       (node5);
+        %to leaves
+        \path [line] (node7) -|       (node14);
+        \path [line] (node7) -|       (node15);
+        
+        \path [line] (node6) -|       (node12);
+        \path [line] (node6) -|       (node13);
+       
+        \path [line] (node4) -|       (node8);
+        \path [line] (node4) -|       (node9);
+        
+        \path [line] (node5) -|       (node10);
+        \path [line] (node5) -|       (node11);
+    \end{tikzpicture}
+\end{document}

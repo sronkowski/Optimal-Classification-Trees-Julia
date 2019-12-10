@@ -1,0 +1,35 @@
+\documentclass[margin=10pt]{article}
+\usepackage[T1]{fontenc}                
+\usepackage[utf8]{inputenc}             
+\usepackage[english,italian]{babel}
+\usepackage{tikz}
+  \usetikzlibrary{shapes,arrows,fit,calc,positioning}
+  \tikzset{box/.style={draw, diamond, thick, text centered, minimum height=0.5cm, minimum width=1cm}}
+  \tikzset{line/.style={draw, thick, -latex'}}
+  
+\begin{document}
+    \begin{tikzpicture}[auto]
+    %depth 1
+        \node [box]                                    (node1)      {$age \leq 0.66$};
+    %depth 2
+        \node [box, below=0.0cm of node1, xshift=-3.5cm]    (node2)    {$children \leq 0.13$};
+        \node [box, below=0.0cm of node1, xshift=3.5cm]     (node3)    {$children \leq 0.56$};
+    %depth 3
+        \node [rectangle, below=0.0cm of node2, xshift=-1.6cm]  (node4)    {$K_1 = 137, K_2 = 27, K_3 = 64$ };
+        \node [rectangle, below=1.0cm of node2, xshift=1.6cm]  (node5)    {$K_3 = 237, K_1 = 150, K_2 = 115$};
+        \node [rectangle, below=0.0cm of node3, xshift=-1.6cm]   (node6)    {$K_1 = 141, K_2 = 80, K_3 = 55$ };
+        \node [rectangle, below=1.0cm of node3, xshift=1.6cm]   (node7)    {$K_1 = 14, K_3 = 6, K_2 = 5$ };
+   
+        
+        %
+        %depth 1 to 2
+        \path [line] (node1) -|         (node3);
+        \path [line] (node1) -|         (node2);
+        %depth 2 to 3
+        \path [line] (node3) -|       (node6);
+        \path [line] (node3) -|       (node7);
+         \path [line] (node2) -|       (node4);
+        \path [line] (node2) -|       (node5);
+       
+    \end{tikzpicture}
+\end{document}
