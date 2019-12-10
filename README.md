@@ -9,4 +9,8 @@ To-Do List:
 - Implement warm start function to greatly reduce solving times
 
 - Develop additional result reporting functions
-    - asdf
+    - Confusion Matrix
+    - LaTeX-rendered visualization of the tree
+    - Precision/Recall/F1
+
+- Function wrapper for the model call
